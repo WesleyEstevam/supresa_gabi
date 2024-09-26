@@ -147,7 +147,7 @@
     </div>
 
     <!-- Música de fundo -->
-    <audio id="backgroundMusic" autoplay loop>
+    <audio id="backgroundMusic" loop>
       <source
         src="Bruno Mars, Anderson .Paak, Silk Sonic - Love's Train (Con Funk Shun Cover) [Official Audio].mp4"
         type="audio/mp3"
@@ -163,6 +163,14 @@
         // Exibe a mensagem e imagem ocultas
         document.getElementById("hiddenMessage").style.display = "block";
         document.getElementById("hiddenImage").style.display = "block";
+
+        // Toca a música de fundo
+        var music = document.getElementById("backgroundMusic");
+        if (music.paused) {
+          music.play().catch((error) => {
+            console.error("Ocorreu um erro ao tentar tocar a música:", error);
+          });
+        }
 
         // Lança os confetes
         if (typeof confetti === "function") {
